@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Bars Menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Menu button */
+        .menu-icon {
+            display: inline-block;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .menu-icon div {
+            width: 35px;
+            height: 4px;
+            background-color: black;
+            margin: 6px 0;
+            transition: 0.4s;
+        }
+
+        /* The menu itself */
+        .nav {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+            background-color: #333;
+        }
+
+        .nav a {
+            color: white;
+            padding: 16px;
+            text-decoration: none;
+            display: none;
+            text-align: center;
+        }
+
+        .nav a:hover {
+            background-color: #575757;
+        }
+
+        .menu-open .nav {
+            height: auto;
+        }
+
+        .menu-open .nav a {
+            display: block;
+        }
+
+        .menu-open .bar1 {
+            transform: rotate(-45deg) translate(-8px, 8px);
+        }
+
+        .menu-open .bar2 {
+            opacity: 0;
+        }
+
+        .menu-open .bar3 {
+            transform: rotate(45deg) translate(-8px, -8px);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Menu icon (hamburger) -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div class="bar1"></div>
+        <div class="bar2"></div>
+        <div class="bar3"></div>
+    </div>
+
+    <!-- Navigation links -->
+    <div class="nav">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+    </div>
+
+    <script>
+        function toggleMenu() {
+            const menuIcon = document.querySelector('.menu-icon');
+            const nav = document.querySelector('.nav');
+
+            // Toggle 'menu-open' class
+            menuIcon.classList.toggle('menu-open');
+            nav.classList.toggle('menu-open');
+        }
+    </script>
+
+</body>
+</html>

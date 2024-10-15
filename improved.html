@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HARAKA CONNECT</title>
+    
+    <link rel="stylesheet" href="styles.css"> <!-- Add your CSS file -->
+</head>
+<body>
+
+    <!-- Header Section -->
+    <header>
+        <img src="1.jpg" alt="logo" id="bk">
+        <h1>HARAKA CONNECT</h1>
+        
+        <!-- 3-bar toggle button -->
+        <div class="toggle-button" onclick="toggleMenu()">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <!-- Navigation Menu -->
+        <ul id="nav-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#signup">Sign Up</a></li>
+            <li><a href="#profiles">Contact</a></li>
+            <li><a href="#faqs">FAQs</a></li>
+            <li><a href="#policy">Privacy Policy</a></li>
+            <li><a href="#reviews">Reviews</a></li>
+        </ul>
+
+        <script>
+            function toggleMenu() {
+                const menu = document.getElementById('nav-menu');
+                if (menu.style.display === "none" || menu.style.display === "") {
+                    menu.style.display = "flex";
+                } else {
+                    menu.style.display = "none";
+                }
+            }
+        </script>
+    </header>
+
+    <!-- About Section -->
+    <section id="home">
+        <h2>About Us</h2>
+        <p>We are a dedicated service provider from Kikuube District, connecting customers with skilled professionals across a wide range of services. We prioritize <strong>quality</strong> and <strong>satisfaction</strong> while enhancing service accessibility within the region.</p>
+        
+        <h3>Our Mission</h3>
+        <ul class="mission-list">
+            <li>Improve service accessibility by providing a reliable platform for customers to access services efficiently.</li>
+            <li>Establish partnerships with skilled professionals to ensure quality service delivery.</li>
+            <li>Monitor service processes to guarantee customer satisfaction and timely delivery.</li>
+        </ul>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="catalog-section">
+        <h2>Explore Our Services</h2>
+        <div class="service-list">
+
+            <!-- Service Cards (Repeat as needed) -->
+            <div class="service-card">
+                <div class="service-image"><img src="service1.jpg" alt="Soap Making Training"></div>
+                <div class="service-content">
+                    <h3 class="service-title">Soap Making Training</h3>
+                    <p>Learn how to make high-quality bar and liquid soap for personal use or business purposes.</p>
+                    <button class="cta-button"><a href="soap.html">Learn More</a></button>
+                </div>
+            </div>
+
+            <!-- More services here -->
+
+        </div>
+    </section>
+
+    <!-- Account Creation Section -->
+    <section id="signup" class="container">
+        <h2>Create Your Account</h2>
+        <form action="/signup" method="POST" onsubmit="return validateSignupForm()">
+            <!-- Input fields -->
+            <label for="firstname">First Name *</label>
+            <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+            
+            <label for="lastname">Last Name *</label>
+            <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+
+            <!-- More fields here -->
+
+            <button type="submit">Sign Up</button>
+        </form>
+    </section>
+
+    <!-- Reviews and Testimonials Section -->
+    <section id="reviews">
+        <h2>Customer Reviews</h2>
+        <p>See what our clients have to say about the services provided by Haraka Connect.</p>
+        <ul class="reviews-list">
+            <li>“Excellent plumbing service! Quick and professional.” - <strong>Jane K.</strong></li>
+            <li>“Great experience with the soap-making training. Highly recommended!” - <strong>John D.</strong></li>
+        </ul>
+    </section>
+
+    <!-- Order Tracking Section -->
+    <section id="order-tracking">
+        <h2>Track Your Order</h2>
+        <p>Enter your order ID to track the status of your requested service.</p>
+        <form action="/track" method="POST">
+            <input type="text" name="order-id" placeholder="Enter Order ID" required>
+            <button type="submit">Track Order</button>
+        </form>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="profiles" class="contact-section">
+        <h2>Contact Us</h2>
+        <div class="contact-form">
+            <h3>Send Us a Message</h3>
+            <form action="message.php" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" placeholder="Your Message" rows="5" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs">
+        <h2>FAQs</h2>
+        <div class="faq">
+            <h5>1. What services does Haraka Connect offer?</h5>
+            <p>We provide a wide range of services including plumbing, electrical, cleaning, and more.</p>
+        </div>
+
+        <!-- More FAQs here -->
+
+    </section>
+
+    <!-- Privacy Policy Section -->
+    <section id="policy">
+        <h2>Privacy Policy</h2>
+        <p>This Privacy Policy outlines how Haraka Connect collects, uses, and protects your personal information.</p>
+    </section>
+
+    <!-- Footer Section -->
+    <footer>
+        <p>&copy; 2024 Haraka Connect - All Rights Reserved</p>
+    </footer>
+    
+<style>
+    * {
+    box-sizing: border-box;
+}
+/* For service cards */
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    transition: transform 0.3s ease;
+}
+
+/* Adjust grid layout on smaller screens */
+@media (max-width: 768px) {
+    .service-list {
+        grid-template-columns: 1fr; /* Full width on smaller screens */
+    }
+}
+
+form {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto; /* Centers the form */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+input, select, textarea {
+    width: 100%; /* Makes the inputs take full width of the form */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+body {
+    overflow-x: hidden; /* Prevents horizontal overflow */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+    position: relative;
+}
+
+header img#bk {
+    height: 50px;
+    width: auto;
+    margin-right: 15px;
+    vertical-align: middle;
+}
+
+header h1 {
+    display: inline;
+    margin: 0;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.toggle-button {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+}
+
+.toggle-button .bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+}
+
+ul#nav-menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    background-color: #444;
+}
+
+ul#nav-menu li {
+    margin: 0 15px;
+}
+
+ul#nav-menu li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul#nav-menu li a:hover {
+    text-decoration: underline;
+}
+
+/* Show menu in mobile with media query */
+@media (max-width: 768px) {
+    ul#nav-menu {
+        flex-direction: column;
+        display: none;
+    }
+
+    ul#nav-menu.active {
+        display: flex;
+    }
+}
+
+/* Section Styling */
+section {
+    padding: 20px;
+    background-color: white;
+    margin-bottom: 20px;
+}
+
+section h2, section h3, section h4 {
+    color: #333;
+}
+
+.mission-list {
+    list-style: disc;
+    padding-left: 20px;
+}
+
+.mission-list li {
+    margin-bottom: 10px;
+}
+
+/* Service Catalog */
+.catalog-section {
+    padding: 20px;
+}
+
+.catalog-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-image {
+    height: 150px;
+    background-color: #ddd;
+    margin-bottom: 15px;
+}
+
+.service-title {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.service-description {
+    font-size: 1rem;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+.cta-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.cta-button a {
+    color: white;
+    text-decoration: none;
+}
+
+.cta-button:hover {
+    background-color: #218838;
+}
+
+/* Form Styles */
+.container {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button[type="submit"] {
+    width: 100%;
+    padding: 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.required {
+    color: red;
+}
+
+/* FAQ Section */
+.faq h5 {
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.faq p {
+    margin: 10px 0;
+}
+
+/* Contact Section */
+.profile {
+    display: flex;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.profile img {
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.profile-info p {
+    margin: 0;
+}
+
+/* Footer */
+footer {
+    background-color: #333;
+    color: white;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .service-list {
+        grid-template-columns: 1fr;
+    }
+
+    .profile {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    header h1 {
+        font-size: 1.5rem;
+    }
+
+    header img#bk {
+        height: 40px;
+    }
+}
+
+</style>
+<script>
+    const toggleButton = document.querySelector('.toggle-button');
+const navMenu = document.querySelector('ul#nav-menu');
+
+toggleButton.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+</script>
+</body>
+</html>
